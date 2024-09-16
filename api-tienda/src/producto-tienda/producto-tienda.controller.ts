@@ -16,9 +16,9 @@ export class ProductoTiendaController {
        return await this.productoTiendaService.asociarTiendaAProducto(productoId,tiendaId);
    }
 
-   @Post(':productoId/stores/:tiendaId')
+   @Get(':productoId/stores/:tiendaId')
    async obtenerTiendaPorProductoIdTiendaId(@Param('productoId') productoId: string,@Param('tiendaId') tiendaId: string){
-       return await this.productoTiendaService.obtenerTiendaPorProductoIdTiendaId(productoId, productoId);
+       return await this.productoTiendaService.obtenerTiendaPorProductoIdTiendaId(productoId, tiendaId);
    }
 
    @Get(':productoId/stores')
@@ -36,7 +36,7 @@ export class ProductoTiendaController {
     @Delete(':productoId/stores/:tiendaId')
     @HttpCode(204)    
     async eliminarTiendaDeProducto(@Param('productoId') productoId: string,@Param('tiendaId') tiendaId: string){
-       return await this.productoTiendaService.eliminarTiendaDeProducto(tiendaId, productoId);
+       return await this.productoTiendaService.eliminarTiendaDeProducto(productoId,tiendaId);
    }
 
 }

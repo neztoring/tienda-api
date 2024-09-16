@@ -17,11 +17,11 @@ export class ProductoTiendaService {
     private readonly tiendaRepository: Repository<TiendaEntity>
 
     async asociarTiendaAProducto(productoId: string, tiendaId: string): Promise<ProductoEntity> {
-        const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productoId}});
+        const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productoId}, relations: ["tiendas"]});
         if (!producto)
           throw new BusinessLogicException("El Producto con el id dado no fue encontrado", BusinessError.NOT_FOUND);
       
-        const tienda: TiendaEntity = await this.tiendaRepository.findOne({where: {id: tiendaId}, relations: ["productos"]})
+        const tienda: TiendaEntity = await this.tiendaRepository.findOne({where: {id: tiendaId}})
         if (!tienda)
           throw new BusinessLogicException("La Tienda con el id dado no fue encontrada", BusinessError.NOT_FOUND);
     
@@ -65,7 +65,7 @@ export class ProductoTiendaService {
     
         for (let i = 0; i < tiendas.length; i++) {
           const tienda: TiendaEntity = await this.tiendaRepository.findOne({where: {id: tiendas[i].id}});
-          if (!tiendas)
+          if (!tienda)
             throw new BusinessLogicException("La Tienda con el id dado no fue encontrada", BusinessError.NOT_FOUND);
         }
     
