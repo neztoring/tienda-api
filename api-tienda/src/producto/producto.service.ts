@@ -3,7 +3,7 @@ import { ProductoEntity } from './producto.entity/producto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../compartido/errores/errores-de-negocio';
-import { TipoProducto } from 'src/compartido/enums/tipo-producto-enum';
+import { TipoProducto } from '../compartido/enums/tipo-producto-enum';
 
 @Injectable()
 export class ProductoService {
