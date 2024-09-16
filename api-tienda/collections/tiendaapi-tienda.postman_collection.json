@@ -1,0 +1,619 @@
+{
+	"info": {
+		"_postman_id": "d4e15c84-cc60-443c-a8d9-3be9b55d6f52",
+		"name": "tiendaapi-tienda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8398563"
+	},
+	"item": [
+		{
+			"name": "Agregar Tienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"tienda_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombre\":\"Tienda1\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar Tienda",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"nombre\":\"Tienda1\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Agregar Tienda Inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 212\", function () {\r",
+							"   pm.response.to.have.status(212);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombre\":\"Tienda1\",\r\n    \"ciudad\":\"BOGOTA\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar Tienda Inválido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"nombre\":\"Tienda1\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las Tiendas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of stores > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las Tiendas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener una Tienda",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un Producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener una Tienda que no existe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.globals.set(\"tienda_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una Tienda que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/19e206e0-7bdf-4ac0-a846-c60b687b3beb",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"19e206e0-7bdf-4ac0-a846-c60b687b3beb"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Actualizar una Tienda",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombre\":\"Tienda Actualizada\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un Producto",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"nombre\":\"Tienda Actualizada\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Actualizar una Tienda que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"tienda_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombre\":\"Tienda Actualizada\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una Tienda que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"nombre\":\"Tienda Actualizada\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id_1}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Actualizar una Tienda inválida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombre\":\"Tienda Actualizada\",\r\n    \"ciudad\":\"BOGOTA\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una Tienda inválida",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"nombre\":\"Tienda Actualizada\",\r\n    \"ciudad\":\"BOGOTA\",\r\n    \"direccion\":\"Cra 45\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar una Tienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una Tienda",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"tienda_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/stores/{{tienda_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"stores",
+						"{{tienda_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un producto que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/stores/{{tienda_id_1}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"stores",
+								"{{tienda_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	]
+}

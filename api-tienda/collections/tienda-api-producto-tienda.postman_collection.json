@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "5d393ad9-f5e8-4ea3-9318-ff8188e481c6",
+		"name": "tienda-api-producto-tienda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8398563"
+	},
+	"item": [
+		{
+			"name": "Asociar Tienda a Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar Tienda a Producto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Asociar Tienda que no existe a un Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"tienda_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id_1}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores",
+						"{{tienda_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar Tienda que no existe a un Producto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id_1}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores",
+								"{{tienda_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las tiendas de un producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las tiendas de un producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Obtener una tienda de un producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las tiendas de un producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Obtener una tienda de un producto que no existe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"producto_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id_1}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id_1}}",
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una tienda de un producto que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Actualizar las tiendas que de producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{tienda_id}}\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar las tiendas que de producto",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{tienda_id}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Actualizar las tiendas  de producto con una tienda inexistente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{tienda_id}}\"\r\n   },\r\n    {\r\n       \"id\": \"c874814e-a09b-46ea-a51e-c28a3f5f03e5\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar las tiendas  de producto con una tienda inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{tienda_id}}\"\r\n   },\r\n    {\r\n       \"id\": \"c874814e-a09b-46ea-a51e-c28a3f5f03e5\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id}}/stores",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id}}",
+								"stores"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda que ofrece un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"producto_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id}}",
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una tienda que ofrece un producto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id_1}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id_1}}",
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda que no ofrece un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"producto_id_1\", '19e206e0-7bdf-4ac0-a846-c60b687b3beb');"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/{{producto_id_1}}/stores/{{tienda_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"{{producto_id_1}}",
+						"stores",
+						"{{tienda_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una tienda que no ofrece un producto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/{{producto_id_1}}/stores/{{tienda_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"{{producto_id_1}}",
+								"stores",
+								"{{tienda_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
